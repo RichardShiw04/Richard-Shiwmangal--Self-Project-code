@@ -21,10 +21,10 @@ The dataset already has a train and test sets. You need a validation set - 10% o
 
 1. Implement the Naive Bayes classifier from scratch - not using the sklearn library. You need to do the text processing - be careful which terms/NERs you want to keep or discard. Then you need to compute the class or prior probabilities, and all conditional probabilities for the vocabulary words. Show the classification results for each class (accuracy, precision, recall, F1, and overall macro and micro averaged scores for the training and testing datasets
 2. Train a BERT model to predict the movie genres. Show the same results for train, test, and validation datasets. 
-3. Use a decoder model to predict the movie genres.  Show the same results for train, test, and validation datasets.
+
 
  ### Turn in ###
-
+--Email Professor and also ask about attendence grade--
 1. The jupyter notebook(s). Please organize and comment your code so that it is clear where the code and answer for each question are.
 2. Add to Answers.md the description of what you did, how you chose the training/validation and testing data sets, and what text processing steps you took for the Naive bayes, etc. Show the results and compare and discuss the performance of the three methods. Please be thorough with your writing and comment your results. 
 3. Write in Acknowledgements.md file any help you got, and if you used LLMs, all prompts and answers you used for your coding.
