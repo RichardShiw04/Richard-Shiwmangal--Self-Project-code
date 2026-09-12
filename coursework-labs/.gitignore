@@ -1,0 +1,7 @@
+build/
+*.class
+*.o
+DeckCards/card_game
+DeckCards/test_deck
+DeckCards/test_cards
+.DS_Store
