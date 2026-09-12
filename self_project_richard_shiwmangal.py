@@ -4,7 +4,7 @@ import pandas as pd
 import os
 
 # Define the path to the CSV files
-csv_path = os.path.expanduser('~/Downloads')
+csv_path = os.path.expanduser(os.environ.get('MOVIE_DATA_DIR', '~/Downloads'))
 train_df = pd.read_csv(os.path.join(csv_path, 'train.csv'))
 test_df = pd.read_csv(os.path.join(csv_path, 'test.csv'))
 genres_df = pd.read_csv(os.path.join(csv_path, 'movies_genres.csv'))
@@ -67,7 +67,7 @@ def preprocess_text(text):
 
     return filtered_tokens
 
-print("NLTK data (punkt, stopwords, and punkt_tab) downloaded and preprocessing function 'preprocess_text' defined.")
+print("Text preprocessing ready (local stop-word list; no NLTK download).")
 
 # Apply the preprocessing function to the 'overview' column in both dataframes
 

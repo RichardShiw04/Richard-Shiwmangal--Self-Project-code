@@ -1,3 +1,4 @@
+import ast
 import pandas as pd
 import numpy as np
 import os
@@ -16,13 +17,13 @@ print("\n" + "="*70)
 print("STEP 1: LOADING DATA")
 print("="*70)
 
-csv_path = os.path.expanduser('~/Downloads')
+csv_path = os.path.expanduser(os.environ.get('MOVIE_DATA_DIR', '~/Downloads'))
 train_df = pd.read_csv(os.path.join(csv_path, 'train.csv'))
 test_df = pd.read_csv(os.path.join(csv_path, 'test.csv'))
 genres_df = pd.read_csv(os.path.join(csv_path, 'movies_genres.csv'))
 
 # USE SAMPLE FOR FASTER TRAINING (can increase later)
-train_sample = train_df.sample(n=2000, random_state=42)  # 2000 samples instead of 8000
+train_sample = train_df.sample(n=min(2000, len(train_df)), random_state=42)  # 2000 samples instead of 8000
 print(f" Train set (sampled): {len(train_sample)} samples")
 print(f" Test set: {len(test_df)} samples")
 
@@ -35,7 +36,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MultiLabelBinarizer
 
 # Parse genre IDs
-train_sample['genre_ids'] = train_sample['genre_ids'].apply(eval)
+train_sample['genre_ids'] = train_sample['genre_ids'].apply(ast.literal_eval)
 mlb = MultiLabelBinarizer()
 y_train_all = mlb.fit_transform(train_sample['genre_ids'])
 
@@ -332,4 +333,5 @@ print(f" Average genres per movie: {np.mean(genre_counts):.2f}")
 print(" BERT TRAINING COMPLETE!")
 print("="*70)
 print(f"\n Submission at: {output_path}")
+
 
